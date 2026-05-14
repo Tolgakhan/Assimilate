@@ -15,7 +15,7 @@ let isMuted = false;
 function playTone(freq, type, duration, vol = 0.1, slideDown = false) {
     if (isMuted || !audioCtx) return;
     
-    // Chrome gibi tarayıcılar kullanıcı etkileşimi olmadan sesi başlatmaz, bu yüzden resume ediyoruz
+    // Bazı gibi tarayıcılar (Ben chromeda yaşadım bu sorunu) kullanıcı etkileşimi olmadan sesi başlatmaz, bu yüzden resume ediyoruz
     if (audioCtx.state === 'suspended') audioCtx.resume();
     
     const osc = audioCtx.createOscillator(); // Ses dalgası üretici
@@ -78,7 +78,7 @@ canvas.height = window.innerHeight;
 function checkCollision(obj1, obj2) {
     let dx = obj1.x - obj2.x;
     let dy = obj1.y - obj2.y;
-    let distance = Math.hypot(dx, dy); // Math.sqrt(dx*dx + dy*dy) ile aynı şey
+    let distance = Math.hypot(dx, dy); 
     return distance < (obj1.radius + obj2.radius);
 }
 
