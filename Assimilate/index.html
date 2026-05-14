@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Assimilate </title>
+    <style>
+        /* Temel sayfa sıfırlaması - kaydırma çubuklarını gizler */
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Oyun alanımız bloğu kaplamalı */
+        canvas { display: block; }
+
+        /* --- BAŞLANGIÇ MENÜSÜ --- */
+        #mainMenu {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(26, 26, 26, 0.95);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            z-index: 20; /* Oyun ekranının üstünde durması için */
+        }
+        #mainMenu h1 { 
+            font-size: 60px; color: #00d2ff; text-shadow: 0 0 15px rgba(0, 210, 255, 0.5); 
+            margin-bottom: 20px; text-align: center;
+        }
+        #howToPlay {
+            background: rgba(0,0,0,0.6); padding: 25px 40px; border-radius: 15px;
+            border: 1px solid #444; margin-bottom: 40px; max-width: 600px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+        #howToPlay h3 { color: #fffc00; margin-top: 0; text-align: center; font-size: 28px;}
+        #howToPlay ul { line-height: 1.8; font-size: 18px; padding-left: 20px; }
+        #howToPlay li { margin-bottom: 10px; }
+        #startBtn {
+            padding: 15px 50px; font-size: 24px; cursor: pointer;
+            background-color: #00d2ff; color: #000; border: none; border-radius: 10px;
+            font-weight: bold; transition: 0.3s; box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+        }
+        #startBtn:hover { 
+            background-color: #fff; box-shadow: 0 0 25px rgba(0, 210, 255, 0.8); transform: scale(1.05);
+        }
+
+        /* --- OYUN İÇİ ARAYÜZ (HUD) --- */
+        #ui {
+            display: none; /* Başlangıçta gizli, oyun başlayınca JS ile açılacak */
+            position: absolute; top: 20px; left: 20px;
+            pointer-events: none; /* Fare tıklamalarını engellemez, altındaki canvas'a iletir */
+            background: rgba(0, 0, 0, 0.5); padding: 15px;
+            border-radius: 10px; border: 1px solid #444; z-index: 10;
+        }
+        #ui h2 { margin-top: 0; color: #00d2ff; }
+        #ui p { margin: 5px 0; font-size: 16px; }
+        .highlight { color: #fffc00; font-weight: bold; }
+        .danger { color: #ff8c00; font-weight: bold; }
+        
+        /* --- GAME OVER EKRANI --- */
+        #gameOver {
+            display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 40px; font-weight: bold; color: #ff4c4c; text-align: center;
+            background: rgba(0,0,0,0.9); padding: 40px; border-radius: 15px; border: 2px solid #ff4c4c; z-index: 30;
+        }
+        #gameOver button {
+            margin-top: 25px; padding: 12px 25px; font-size: 20px; cursor: pointer;
+            background-color: #fff; color: #000; border: none; border-radius: 5px; font-weight: bold;
+        }
+        
+        /* Müzik Kapatma Butonu */
+        #muteBtn {
+            position: absolute; top: 20px; right: 20px; padding: 10px 15px;
+            background: rgba(0,0,0,0.6); border: 1px solid #444; color: white;
+            cursor: pointer; border-radius: 5px; z-index: 40; font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="muteBtn">Sesi Kapat</button>
+
+    <div id="mainMenu">
+        <h1>Assimilate</h1>
+        <div id="howToPlay">
+            <h3>Nasıl Oynanır?</h3>
+            <ul>
+                <li><b>W, A, S, D</b> tuşları ile mavi çekirdeği kontrol et.</li>
+                <li>Düşmanlara çarparak onları kendine yapıştır ve <b>Et Kalkanı</b> yap.</li>
+                <li>Düşman mermileri kalkanlarına çarparsa, kalkanın yok olur.</li>
+                <li><span class="danger">DİKKAT:</span> Turuncu Kamikazelere DEĞME! Patlayarak kalkanları yok ederler.</li>
+                <li>Kamikazeler duvarlara <b>3 defa</b> çarparsa yine patlarlar.</li>
+                <li>Mavi Çekirdek vurulursa oyun biter. Hayatta kal!</li>
+            </ul>
+        </div>
+        <button id="startBtn">Oyuna Başla</button>
+    </div>
+
+    <div id="ui">
+        <h2>Assimilate</h2>
+        <p>Süre: <span id="timeScore" class="highlight">0</span> sn</p>
+        <p>Zorluk: <span id="difficultyLevel" class="highlight">1</span></p>
+        <p>Kalkan: <span id="shieldCount" class="highlight">0</span></p>
+    </div>
+    
+    <div id="gameOver">
+        ÇEKİRDEK VURULDU!<br>
+        <div style="font-size: 24px; color: white; margin-top: 15px;">Hayatta Kalma Süresi: <span id="finalScore">0</span> Saniye</div>
+        <button onclick="location.reload()">Tekrar Oyna</button>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <script src="game.js"></script>
+</body>
+</html>
