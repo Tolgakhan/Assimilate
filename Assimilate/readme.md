@@ -1,6 +1,8 @@
 #  Assimilate
 
-**Assimilate**, temel mekaniklerini *Katamari Damacy*'den alan, hızlı tempolu ve web tabanlı bir 2D hayatta kalma (bullet-hell) oyunudur. Oyuncular merkezdeki mavi çekirdeği kontrol eder ve üzerlerine gelen düşman dalgalarından kurtulmak için onlara çarpıp kendi kütlelerine katarak onları birer "et kalkanı" olarak kullanmak zorundadır.
+**Assimilate**, temel mekaniklerini *Starfun Fever*'dan alan, hızlı tempolu ve web tabanlı bir 2D hayatta kalma (bullet-hell) oyunudur. Oyuncular merkezdeki mavi çekirdeği kontrol eder ve üzerlerine gelen düşman dalgalarından kurtulmak için onlara çarpıp kendi kütlelerine katarak onları birer "et kalkanı" olarak kullanmak zorundadır.
+
+Starfunk Fever url : https://radetzky.itch.io/starfunk-fever
 
 Hiçbir eklenti veya kütüphane gerektirmeden doğrudan tarayıcı üzerinden oynanabilir.
 
