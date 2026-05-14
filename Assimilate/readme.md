@@ -6,11 +6,13 @@ Hiçbir eklenti veya kütüphane gerektirmeden doğrudan tarayıcı üzerinden o
 
 ## 📸 Ekran Görüntüleri
 
-![Oynanış Görseli 1](gorsel_klasoru/ekran_goruntusu_1.png)
-*Oyundan bir hayatta kalma anı.*
+<img width="1865" height="942" alt="image" src="https://github.com/user-attachments/assets/c29ef17d-3062-40b7-8a53-25b0b33f821c" />
 
-![Oynanış Görseli 2](gorsel_klasoru/ekran_goruntusu_2.png)
-*Et kalkanı mekaniği ve mermi cehennemi (bullet hell).*
+*Oyunun başlangıç menüsü*
+
+<img width="1866" height="941" alt="ekran_goruntusu_2" src="https://github.com/user-attachments/assets/f56c90be-e056-45cf-9bc3-bee2785f2059" />
+
+*Mermi cehennemi (bullet hell).*
 
 ## 🎮 Oynanış Mekanikleri
 
